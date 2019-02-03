@@ -55,9 +55,13 @@ public class MainActivity extends AppCompatActivity {
 
                         if (location != null){
                             double longitude = location.getLongitude();
+                            double latitude = location.getLatitude();
+                            String latitudeString = String.valueOf(latitude);
                             String longitudeString = String.valueOf(longitude);
-                            TextView textView = findViewById(R.id.longitude);
-                            textView.setText(longitudeString);
+                            TextView longitudeView = findViewById(R.id.longitude);
+                            TextView latitudeView = findViewById(R.id.latitude);
+                            longitudeView.setText("Longitude: " + longitudeString);
+                            latitudeView.setText("Latitude: " + latitudeString);
                         }
 
                     }
