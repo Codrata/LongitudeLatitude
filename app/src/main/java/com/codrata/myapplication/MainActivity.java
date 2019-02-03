@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,8 +61,30 @@ public class MainActivity extends AppCompatActivity {
                             String longitudeString = String.valueOf(longitude);
                             TextView longitudeView = findViewById(R.id.longitude);
                             TextView latitudeView = findViewById(R.id.latitude);
+                            EditText latB = findViewById(R.id.latitudeBedit);
+                            EditText longB = findViewById(R.id.longitudeBedit);
+
+                            double latitudeB = Double.parseDouble(latB.getText().toString());
+                            double longitudeB = Double.parseDouble(longB.getText().toString());
+
                             longitudeView.setText("Longitude: " + longitudeString);
                             latitudeView.setText("Latitude: " + latitudeString);
+
+                            Location locationA = new Location("point A");
+                            locationA.setLatitude(latitude);
+                            locationA.setLongitude(longitude);
+                            Location locationB = new Location("point B");
+                            locationB.setLatitude(latitudeB);
+                            locationB.setLongitude(longitudeB);
+
+                            TextView finalDistance = findViewById(R.id.finaldistance);
+
+                            float distance = locationA.distanceTo(locationB);
+
+                            //convert distance to km
+                            distance = (float) (distance * 0.001);
+                            String finalDist = String.valueOf(distance);
+                            finalDistance.setText(finalDist + " " + "km");
                         }
 
                     }
